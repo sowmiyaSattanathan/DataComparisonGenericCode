@@ -1,11 +1,14 @@
 package StructureComparison.DataComparison;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
+
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-public class CSVFile {
 
+public class CSVFile {
+	
 	public static XSSFSheet ConvertCSVToSheet(String csvFilePath ) {
 		 XSSFSheet sheet = null;
 	    try {
@@ -31,5 +34,4 @@ public class CSVFile {
 	    return sheet;
 	}
 
-	
 }

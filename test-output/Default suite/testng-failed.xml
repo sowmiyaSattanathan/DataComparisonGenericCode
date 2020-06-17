@@ -5,7 +5,7 @@
     <classes>
       <class name="StructureComparison.DataComparison.MainFile">
         <methods>
-          <include name="readsoucefromcsv"/>
+          <include name="readsourcefromexcel"/>
         </methods>
       </class> <!-- StructureComparison.DataComparison.MainFile -->
     </classes>

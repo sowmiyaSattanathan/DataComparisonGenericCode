@@ -5,8 +5,25 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.TreeMap;
+
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
 import StructureComparison.DataComparison.readFile;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.ss.usermodel.Cell;
@@ -223,6 +240,81 @@ public class DataCompare {
 
 	                   
 		}
+    
+    public static void SendMailByAttachment(String OutputFile) {
+    	
+    	// Recipient's email ID
+        String to = Constants.To_Address;
+
+        // Sender's email ID 
+        String from = Constants.From_Address;
+
+        final String username = Constants.User;
+        final String password = Constants.Password;
+
+        
+        String host =Constants.Host;
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+
+        // Get the Session object.
+        Session session = Session.getInstance(props,
+           new javax.mail.Authenticator() {
+              protected PasswordAuthentication getPasswordAuthentication() {
+                 return new PasswordAuthentication(username, password);
+              }
+           });
+
+        try {
+           // Create a default MimeMessage object.
+           Message message = new MimeMessage(session);
+
+           // Set From: header field of the header.
+           message.setFrom(new InternetAddress(from));
+
+           // Set To: header field of the header.
+           message.setRecipients(Message.RecipientType.TO,
+              InternetAddress.parse(to));
+
+           // Set Subject: header field
+           message.setSubject("Automation Result");
+
+           // Create the message part
+           BodyPart messageBodyPart = new MimeBodyPart();
+
+           // Now set the actual message
+           messageBodyPart.setText("Hi,Kindly check the result output");
+
+           // Create a multipar message
+           Multipart multipart = new MimeMultipart();
+
+           // Set text message part
+           multipart.addBodyPart(messageBodyPart);
+
+           // Part two is attachment
+           messageBodyPart = new MimeBodyPart();
+           String filename = OutputFile;
+           DataSource source = new FileDataSource(filename);
+           messageBodyPart.setDataHandler(new DataHandler(source));
+           messageBodyPart.setFileName(filename);
+           multipart.addBodyPart(messageBodyPart);
+
+           // Send the complete message parts
+           message.setContent(multipart);
+
+           // Send message
+           Transport.send(message);
+
+           System.out.println("Sent message successfully....");
+    
+        } catch (MessagingException e) {
+           throw new RuntimeException(e);
+        }
+     }
 
 	
 }
