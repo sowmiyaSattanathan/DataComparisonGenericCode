@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-import StructureComparison.DataComparison.readFile;
+import StructureComparison.DataComparison.ExcelFile;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFCell;

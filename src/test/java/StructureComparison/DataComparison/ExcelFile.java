@@ -13,7 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class readFile {
+public class ExcelFile {
 	
 	
 	    public static XSSFSheet ConvertExcelToSheet(String excellFilePath)throws IOException {

@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="2494" started-at="2020-06-16T07:50:11Z" finished-at="2020-06-16T07:50:14Z">
+  <suite name="Default suite" duration-ms="1104" started-at="2020-06-17T08:51:09Z" finished-at="2020-06-17T08:51:10Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="2494" started-at="2020-06-16T07:50:11Z" finished-at="2020-06-16T07:50:14Z">
+    <test name="Default test" duration-ms="1104" started-at="2020-06-17T08:51:09Z" finished-at="2020-06-17T08:51:10Z">
       <class name="StructureComparison.DataComparison.MainFile">
-        <test-method status="PASS" signature="readsoucefromcsv()[pri:0, instance:StructureComparison.DataComparison.MainFile@7823a2f9]" name="readsoucefromcsv" duration-ms="1314" started-at="2020-06-16T07:50:11Z" finished-at="2020-06-16T07:50:13Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- readsoucefromcsv -->
-        <test-method status="PASS" signature="readsoucefromdb()[pri:0, instance:StructureComparison.DataComparison.MainFile@7823a2f9]" name="readsoucefromdb" duration-ms="521" started-at="2020-06-16T07:50:13Z" finished-at="2020-06-16T07:50:13Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- readsoucefromdb -->
-        <test-method status="PASS" signature="readsoucefromexcel()[pri:0, instance:StructureComparison.DataComparison.MainFile@7823a2f9]" name="readsoucefromexcel" duration-ms="603" started-at="2020-06-16T07:50:13Z" finished-at="2020-06-16T07:50:14Z">
+        <test-method status="PASS" signature="readsoucefromexcel()[pri:0, instance:StructureComparison.DataComparison.MainFile@4cc0edeb]" name="readsoucefromexcel" duration-ms="1071" started-at="2020-06-17T08:51:09Z" finished-at="2020-06-17T08:51:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- readsoucefromexcel -->
