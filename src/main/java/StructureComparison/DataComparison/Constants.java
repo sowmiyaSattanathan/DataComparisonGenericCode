@@ -7,5 +7,4 @@ public class Constants {
 	protected static String Password= "Automation";
 	public static String Host="smtp.gmail.com";
 	
-
 }
