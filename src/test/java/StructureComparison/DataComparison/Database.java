@@ -48,7 +48,8 @@ public class Database {
             XSSFWorkbook workbook = new XSSFWorkbook();
              sheet = workbook.createSheet(table);
  
-            
+             writeHeaderLine(result,sheet);
+             writeDataLines(result, workbook, sheet);
             workbook.close();
  
             statement.close();

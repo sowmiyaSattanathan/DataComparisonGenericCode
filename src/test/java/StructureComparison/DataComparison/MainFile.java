@@ -1,3 +1,4 @@
+
 package StructureComparison.DataComparison;
 
 import java.io.FileInputStream;
@@ -5,7 +6,7 @@ import java.io.IOException;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.testng.annotations.Test;
-import StructureComparison.DataComparison.readFile;
+
 import StructureComparison.DataComparison.DataCompare;
 import StructureComparison.DataComparison.Database;
 
@@ -22,8 +23,8 @@ public class MainFile {
 	
 	@Test
 	public void readsourcefromexcel() throws IOException {
-		XSSFSheet sheet1 = readFile.ConvertExcelToSheet("F:\\DataComparison_Update_Testng\\DataComparisonGenericCode\\Excel\\SourceFile.xlsx");
-		XSSFSheet sheet2 = readFile.ConvertExcelToSheet("F:\\DataComparison_Update_Testng\\DataComparisonGenericCode\\Excel\\TragetFile.xlsx");
+		XSSFSheet sheet1 = ExcelFile.ConvertExcelToSheet("F:\\DataComparison_Update_Testng\\DataComparisonGenericCode\\Excel\\SourceFile.xlsx");
+		XSSFSheet sheet2 = ExcelFile.ConvertExcelToSheet("F:\\DataComparison_Update_Testng\\DataComparisonGenericCode\\Excel\\TragetFile.xlsx");
 		DataCompare.compareTwoSheets(sheet1,sheet2);
 		DataCompare.writeOutputFile("F:\\DataComparison_Update_Testng\\DataComparisonGenericCode\\Excel\\ExcelOutput.xlsx");
 		DataCompare.SendMailByAttachment("F:\\DataComparison_Update_Testng\\DataComparisonGenericCode\\Excel\\ExcelOutput.xlsx");
