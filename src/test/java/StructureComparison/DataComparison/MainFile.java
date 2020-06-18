@@ -12,21 +12,23 @@ import StructureComparison.DataComparison.Database;
 import StructureComparison.DataComparison.CSVFile;
 
 public class MainFile {
-	  @Test
+	  @Ignore
 	 public void readsoucefromdb() throws IOException{
 		 Database exporter = new Database();
 	        XSSFSheet sheet1 = exporter.ExportDbTableToSheet("customerdeatails","select * from customerdeatails");
 	        XSSFSheet sheet2 = exporter.ExportDbTableToSheet("orderdetails","select * from orderdetails");
 	        DataCompare.compareTwoSheets(sheet1,sheet2);
 			DataCompare.writeOutputFile("E:\\my workspace\\testdb\\DataComparison\\Excel\\OutputFile\\DBOutput.xlsx");
+			DataCompare.SendMailByAttachment("E:\\my workspace\\testdb\\DataComparison\\Excel\\OutputFile\\DBOutput.xlsx");
 	 }
 	
-	@Test
+	@Ignore
 	public void readsoucefromexcel() throws IOException {
 		XSSFSheet sheet1 = ExcelFile.ConvertExcelToSheet("E:\\my workspace\\testdb\\DataComparison\\Excel\\SourceFile.xlsx");
 		XSSFSheet sheet2 = ExcelFile.ConvertExcelToSheet("E:\\my workspace\\testdb\\DataComparison\\Excel\\TragetFile.xlsx");
 		DataCompare.compareTwoSheets(sheet1,sheet2);
 		DataCompare.writeOutputFile("E:\\my workspace\\testdb\\DataComparison\\Excel\\OutputFile\\ExcelOutput.xlsx");
+		DataCompare.SendMailByAttachment("E:\\my workspace\\testdb\\DataComparison\\Excel\\OutputFile\\ExcelOutput.xlsx");
 	}
 	
 	 @Test
@@ -35,6 +37,7 @@ public class MainFile {
 		XSSFSheet sheet2 = CSVFile.ConvertCSVToSheet("E:\\my workspace\\testdb\\DataComparison\\Excel\\TragetFileCSV.csv");
 		DataCompare.compareTwoSheets(sheet1,sheet2);
 		DataCompare.writeOutputFile("E:\\my workspace\\testdb\\DataComparison\\Excel\\OutputFile\\CSVOutput.xlsx");
+		DataCompare.SendMailByAttachment("E:\\my workspace\\testdb\\DataComparison\\Excel\\OutputFile\\CSVOutput.xlsx");
 	}
 	
 	

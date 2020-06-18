@@ -5,9 +5,29 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.TreeMap;
+
+
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+
+
 import StructureComparison.DataComparison.ExcelFile;
+
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -56,11 +76,29 @@ public class DataCompare {
             for (int i = firstRow1 + 1; i <= lastRow1; i++) {
                 XSSFRow row1 = sheet1.getRow(i);//2
                 if (row1 != null) {
-                    String Row1ID = row1.getCell(0).getRawValue();
+                	   String Row1ID = "";
+                     	 switch (row1.getCell(0).getCellType()) {
+                          
+                          case HSSFCell.CELL_TYPE_NUMERIC:
+                        	  Row1ID = Integer.toString((int)row1.getCell(0).getNumericCellValue());
+                         	 break;
+                          case HSSFCell.CELL_TYPE_STRING:
+                          	Row1ID = row1.getCell(0).getStringCellValue();
+                         	 break;
+                     	 }
                     Boolean notFound = true;
                     for (int j = firstRow2 + 1; j <= lastRow2; j++) {
                         XSSFRow row2 = sheet2.getRow(j);
-                        String Row2ID = row2.getCell(0).getRawValue();
+                        String Row2ID = "";
+                   	 switch (row2.getCell(0).getCellType()) {
+                        
+                        case HSSFCell.CELL_TYPE_NUMERIC:
+                       	  Row2ID = Integer.toString((int)row2.getCell(0).getNumericCellValue());
+                       	 break;
+                        case HSSFCell.CELL_TYPE_STRING:
+                       	  Row2ID = row2.getCell(0).getStringCellValue();
+                       	 break;
+                   	 }
                         if (Row1ID.equals(Row2ID)) {
                             notFound =false;
                             compareTwoRows(row1, row2, i);
@@ -79,11 +117,31 @@ public class DataCompare {
             for (int i = firstRow2 + 1; i <= lastRow2; i++) {
                 XSSFRow row2 = sheet2.getRow(i);//2
                 if (row2 != null) {
-                    String Row2ID = row2.getCell(0).getRawValue();
+                	String Row2ID = "";
+                	 switch (row2.getCell(0).getCellType()) {
+                     
+                     case HSSFCell.CELL_TYPE_NUMERIC:
+                    	 Row2ID = Integer.toString((int)row2.getCell(0).getNumericCellValue());
+                    	 break;
+                     case HSSFCell.CELL_TYPE_STRING:
+                    	  Row2ID = row2.getCell(0).getStringCellValue();
+                    	 break;
+                	 }
+                    
                     Boolean notFound = true;
                     for (int j = firstRow1 + 1; j <= lastRow1; j++) {
                         XSSFRow row1 = sheet1.getRow(j);
-                        String Row1ID = row1.getCell(0).getRawValue();
+                       
+                        String Row1ID = "";
+                   	 switch (row1.getCell(0).getCellType()) {
+                        
+                        case HSSFCell.CELL_TYPE_NUMERIC:
+                        	Row1ID = Integer.toString((int)row1.getCell(0).getNumericCellValue());
+                       	 break;
+                        case HSSFCell.CELL_TYPE_STRING:
+                        	Row1ID = row1.getCell(0).getStringCellValue();
+                       	 break;
+                   	 }
                         if (Row1ID.equals(Row2ID)) {
                             notFound =false;
                             
@@ -223,6 +281,81 @@ public class DataCompare {
 
 	                   
 		}
+    
+    public static void SendMailByAttachment(String OutputFile) {
+    	
+    	// Recipient's email ID
+        String to = Constants.To_Address;
+
+        // Sender's email ID 
+        String from = Constants.From_Address;
+
+        final String username = Constants.User;
+        final String password = Constants.Password;
+
+        
+        String host =Constants.Host;
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+
+        // Get the Session object.
+        Session session = Session.getInstance(props,
+           new javax.mail.Authenticator() {
+              protected PasswordAuthentication getPasswordAuthentication() {
+                 return new PasswordAuthentication(username, password);
+              }
+           });
+
+        try {
+           // Create a default MimeMessage object.
+           Message message = new MimeMessage(session);
+
+           // Set From: header field of the header.
+           message.setFrom(new InternetAddress(from));
+
+           // Set To: header field of the header.
+           message.setRecipients(Message.RecipientType.TO,
+              InternetAddress.parse(to));
+
+           // Set Subject: header field
+           message.setSubject("Automation Result for Data Comparison");
+
+           // Create the message part
+           BodyPart messageBodyPart = new MimeBodyPart();
+
+           // Now set the actual message
+           messageBodyPart.setText("Hi,Kindly check the output");
+
+           // Create a multipart message
+           Multipart multipart = new MimeMultipart();
+
+           // Set text message part
+           multipart.addBodyPart(messageBodyPart);
+
+           // Part two is attachment
+           messageBodyPart = new MimeBodyPart();
+           String filename = OutputFile;
+           DataSource source = new FileDataSource(filename);
+           messageBodyPart.setDataHandler(new DataHandler(source));
+           messageBodyPart.setFileName(filename);
+           multipart.addBodyPart(messageBodyPart);
+
+           // Send the complete message parts
+           message.setContent(multipart);
+
+           // Send message
+           Transport.send(message);
+
+           System.out.println("Sent message successfully....");
+    
+        } catch (MessagingException e) {
+           throw new RuntimeException(e);
+        }
+     }
 
 	
 }

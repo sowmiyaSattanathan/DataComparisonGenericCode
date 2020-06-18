@@ -2,15 +2,15 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1104" started-at="2020-06-17T08:51:09Z" finished-at="2020-06-17T08:51:10Z">
+  <suite name="Default suite" duration-ms="8643" started-at="2020-06-18T09:59:51Z" finished-at="2020-06-18T09:59:59Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1104" started-at="2020-06-17T08:51:09Z" finished-at="2020-06-17T08:51:10Z">
+    <test name="Default test" duration-ms="8643" started-at="2020-06-18T09:59:51Z" finished-at="2020-06-18T09:59:59Z">
       <class name="StructureComparison.DataComparison.MainFile">
-        <test-method status="PASS" signature="readsoucefromexcel()[pri:0, instance:StructureComparison.DataComparison.MainFile@4cc0edeb]" name="readsoucefromexcel" duration-ms="1071" started-at="2020-06-17T08:51:09Z" finished-at="2020-06-17T08:51:10Z">
+        <test-method status="PASS" signature="readsoucefromCSV()[pri:0, instance:StructureComparison.DataComparison.MainFile@724af044]" name="readsoucefromCSV" duration-ms="8608" started-at="2020-06-18T09:59:51Z" finished-at="2020-06-18T09:59:59Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- readsoucefromexcel -->
+        </test-method> <!-- readsoucefromCSV -->
       </class> <!-- StructureComparison.DataComparison.MainFile -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
