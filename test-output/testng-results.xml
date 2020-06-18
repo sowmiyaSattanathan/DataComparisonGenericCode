@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="1" ignored="0" total="3" passed="2">
   <reporter-output>
   </reporter-output>
+<<<<<<< HEAD
   <suite name="Default suite" duration-ms="8643" started-at="2020-06-18T09:59:51Z" finished-at="2020-06-18T09:59:59Z">
     <groups>
     </groups>
@@ -11,6 +12,58 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- readsoucefromCSV -->
+=======
+  <suite name="Default suite" duration-ms="29357" started-at="2020-06-17T15:21:11Z" finished-at="2020-06-17T15:21:41Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="29357" started-at="2020-06-17T15:21:11Z" finished-at="2020-06-17T15:21:41Z">
+      <class name="StructureComparison.DataComparison.MainFile">
+        <test-method status="PASS" signature="readsoucefromcsv()[pri:0, instance:StructureComparison.DataComparison.MainFile@55ca8de8]" name="readsoucefromcsv" duration-ms="791" started-at="2020-06-17T15:21:11Z" finished-at="2020-06-17T15:21:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- readsoucefromcsv -->
+        <test-method status="FAIL" signature="readsourcefromdb()[pri:0, instance:StructureComparison.DataComparison.MainFile@55ca8de8]" name="readsourcefromdb" duration-ms="20562" started-at="2020-06-17T15:21:12Z" finished-at="2020-06-17T15:21:33Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+at StructureComparison.DataComparison.DataCompare.compareTwoSheets(DataCompare.java:69)
+at StructureComparison.DataComparison.MainFile.readsourcefromdb(MainFile.java:19)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- readsourcefromdb -->
+        <test-method status="PASS" signature="readsourcefromexcel()[pri:0, instance:StructureComparison.DataComparison.MainFile@55ca8de8]" name="readsourcefromexcel" duration-ms="7957" started-at="2020-06-17T15:21:33Z" finished-at="2020-06-17T15:21:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- readsourcefromexcel -->
+>>>>>>> 21f5d76f6f837781b28e1ec369ade4e2276dada8
       </class> <!-- StructureComparison.DataComparison.MainFile -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

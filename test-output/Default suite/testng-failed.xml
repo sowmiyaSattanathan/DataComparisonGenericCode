@@ -5,7 +5,11 @@
     <classes>
       <class name="StructureComparison.DataComparison.MainFile">
         <methods>
+<<<<<<< HEAD
           <include name="readsoucefromexcel"/>
+=======
+          <include name="readsourcefromdb"/>
+>>>>>>> 21f5d76f6f837781b28e1ec369ade4e2276dada8
         </methods>
       </class> <!-- StructureComparison.DataComparison.MainFile -->
     </classes>

@@ -102,5 +102,10 @@
     <artifactId>javax.mail</artifactId>
     <version>1.6.2</version>
 </dependency>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 21f5d76f6f837781b28e1ec369ade4e2276dada8
   </dependencies>
 </project>

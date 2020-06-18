@@ -12,7 +12,7 @@ import StructureComparison.DataComparison.Database;
 import StructureComparison.DataComparison.CSVFile;
 
 public class MainFile {
-	  @Ignore
+	  @Test
 	 public void readsoucefromdb() throws IOException{
 		 Database exporter = new Database();
 	        XSSFSheet sheet1 = exporter.ExportDbTableToSheet("customerdeatails","select * from customerdeatails");
@@ -22,7 +22,7 @@ public class MainFile {
 			DataCompare.SendMailByAttachment("E:\\my workspace\\testdb\\DataComparison\\Excel\\OutputFile\\DBOutput.xlsx");
 	 }
 	
-	@Ignore
+	@Test
 	public void readsoucefromexcel() throws IOException {
 		XSSFSheet sheet1 = ExcelFile.ConvertExcelToSheet("E:\\my workspace\\testdb\\DataComparison\\Excel\\SourceFile.xlsx");
 		XSSFSheet sheet2 = ExcelFile.ConvertExcelToSheet("E:\\my workspace\\testdb\\DataComparison\\Excel\\TragetFile.xlsx");
